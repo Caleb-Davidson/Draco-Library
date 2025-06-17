@@ -1,0 +1,13 @@
+{
+  "name": "draco.library",
+  "version": "1.0.0",
+  "displayName": "Draco Library",
+  "description": "Custom Unity library for various utilities and enhancements.",
+  "unity": "2020.3",
+  "licensesUrl": "https://opensource.org/license/mit",
+  "author": {
+    "name": "Caleb Davidson",
+    "url": "https://github.com/Caleb-Davidson/Draco-Library"
+  }
+}
+
