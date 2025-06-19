@@ -147,9 +147,10 @@ using (new GUIScopes.BackgroundColorScope(Color.white)) {
 ```
 
 #### GameObject Extensions
-- `GetChildren()`: Returns all child transforms as enumerable
+- `GetChildren()`: Returns all child GameObjects as enumerable
 - `EnsureComponent<T>()`: Gets or adds component
-- `DestroyAllChildren()`: Removes all child objects
+- `DestroyAllChildren()`: Removes all child GameObjects
+- `InLayerMask(LayerMask)`: Checks if the GameObject is in the specified layer mask
 
 **Examples:**
 ```csharp
@@ -163,6 +164,11 @@ var rigidbody = gameObject.EnsureComponent<Rigidbody>();
 
 // Safe destruction with null check
 gameObject.DestroyAllChildren();
+
+// Check if object is in a specific layer
+if (gameObject.InLayerMask(groundLayer)) {
+    // Handle ground collision
+}
 ```
 
 #### Number Extensions
@@ -322,14 +328,15 @@ var buttonRect = new Rect(
 
 #### Vector Extensions
 - **Component Access/Modification**
-  - `WithX/Y/Z()`: Returns new vector with modified component
-  - `WithXY/YZ/XZ()`: Returns new vector with modified components
+  - `WithX/Y/Z()`: Returns new vector with modified component (works with Vector2, Vector2Int, Vector3, Vector3Int)
+  - `WithXY/YZ/XZ()`: Returns new vector with multiple modified components
+- **Vector Conversion**
+  - `ToVector2XY()`, `ToVector2XZ()`, `ToVector2YZ()`: Converts from Vector3/Vector3Int to Vector2/Vector2Int using specified planes
+  - `ToVector3XY(z)`, `ToVector3XZ(y)`, `ToVector3YZ(x)`: Converts from Vector2/Vector2Int to Vector3/Vector3Int with optional fill value
+  - `FloorToVector2IntXY()`, `CeilToVector2IntXY()`, `RoundToVector2IntXY()`: Converts with different rounding modes (also XZ and YZ variants)
 - **Range Checking**
   - `Contains(value)`: Checks if value is in range (exclusive)
   - `ContainsInclusive(value)`: Checks if value is in range (inclusive)
-- **Vector Conversion**
-  - `ToVector2XY()`, `ToVector2XZ()`, `ToVector2YZ()`: Converts from Vector3 to Vector2 using specified planes
-  - `ToVector3XY(z)`, `ToVector3XZ(y)`, `ToVector3YZ(x)`: Converts from Vector2 to Vector3 with optional fill value
 
 **Examples:**
 ```csharp
@@ -342,6 +349,10 @@ Vector3 offset = Vector3.zero
     .WithX(5)          // (5, 0, 0)
     .WithY(10)         // (5, 10, 0)
     .WithZ(15);        // (5, 10, 15)
+
+// Grid-based positioning
+Vector3 worldPos = transform.position;
+Vector2Int gridPos = worldPos.RoundToVector2IntXZ(); // Convert to grid coordinates
 
 // Range checking (useful for validations)
 Vector2 healthRange = new Vector2(0, 100);
