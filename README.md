@@ -2,6 +2,38 @@
 
 A comprehensive utility library for Unity projects, providing solutions to common development challenges and quality-of-life improvements.
 
+## Table of Contents
+
+- [Draco Library](#draco-library)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+    - [Attributes](#attributes)
+      - [Numeric Validators](#numeric-validators)
+      - [Resource Validators](#resource-validators)
+      - [Vector Validators](#vector-validators)
+      - [Inspector Attributes](#inspector-attributes)
+    - [Editor Tools](#editor-tools)
+    - [Extensions](#extensions)
+      - [Boolean Extensions](#boolean-extensions)
+      - [Collection Extensions](#collection-extensions)
+      - [Color Extensions](#color-extensions)
+      - [GUI Scopes](#gui-scopes)
+      - [GameObject Extensions](#gameobject-extensions)
+      - [Number Extensions](#number-extensions)
+      - [Random Extensions](#random-extensions)
+      - [Transform Extensions](#transform-extensions)
+      - [Object Extensions](#object-extensions)
+      - [Rect Extensions](#rect-extensions)
+      - [Task Extensions](#task-extensions)
+      - [Vector Extensions](#vector-extensions)
+    - [Model](#model)
+      - [ScriptableList](#scriptablelist)
+      - [ScriptableSingleton](#scriptablesingleton)
+      - [SerializableHashSet](#serializablehashset)
+    - [Utilities](#utilities)
+  - [Contributing](#contributing)
+  - [License](#license)
+
 ## Features
 
 ### Attributes
@@ -28,6 +60,10 @@ Validate resource references in the Unity editor:
 
 #### Vector Validators
 - `[IsNotOrigin]`: Ensures a vector is not at the origin (0,0) or (0,0,0)
+
+#### Inspector Attributes
+Control field visibility in the Unity inspector:
+- `[ShowAllFieldsInPlayMode]`: Shows all fields of a class in the inspector while in play mode
 
 ### Editor Tools
 - **Asset Tracker**: Monitor and track assets being imported, deleted, or moved
